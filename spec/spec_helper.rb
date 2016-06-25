@@ -4,7 +4,7 @@ require "activerecord-msgpack"
 
 require File.expand_path('../models', __FILE__)
 
-ActiveRecord::Base.default_timezone = :jst
+ActiveRecord::Base.default_timezone = :local
 
 include ActiveRecord::Tasks
 

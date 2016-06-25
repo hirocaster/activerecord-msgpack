@@ -1,4 +1,4 @@
-base = { "adapter" => "sqlite3", "database" => "test.sqlite3", "pool" => 5, "timeout" => 5000 }
+base = { "adapter" => "mysql2", "database" => "activerecord-msgpack", "pool" => 5, "timeout" => 5000 }
 
 ActiveRecord::Base.configurations = {
                                      "test" => base
