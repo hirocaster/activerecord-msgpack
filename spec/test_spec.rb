@@ -10,8 +10,6 @@ describe "Test" do
     dump = ActiveRecord::Msgpack::Serializer.dump(alice)
     after_alice = ActiveRecord::Msgpack::Serializer.load(dump)
 
-    binding.pry
-
     expect(after_alice.id).to eq alice.id
     expect(after_alice.name).to eq alice.name
     expect(after_alice.created_at.to_s).to eq alice.created_at.to_s
