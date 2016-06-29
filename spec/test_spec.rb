@@ -27,9 +27,16 @@ describe "Test" do
   end
 
   it "Pack/Unpack Date class" do
-    date = Date.new
+    date = Date.today
     packed = MessagePack.pack(date)
     unpacked_date = MessagePack.unpack(packed)
     expect(unpacked_date).to eq date
+  end
+
+  it "Pack/Unpack DateTime class" do
+    date_time = DateTime.now
+    packed = MessagePack.pack(date_time)
+    unpacked_date_time = MessagePack.unpack(packed)
+    expect(unpacked_date_time).to eq date_time
   end
 end

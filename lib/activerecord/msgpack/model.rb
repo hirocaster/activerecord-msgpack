@@ -5,13 +5,15 @@ MessagePack::DefaultFactory.register_type(0x01,
                                           packer: ->(t){ t.to_r.to_s.to_msgpack },
                                           unpacker: ->(t){ Time.at(Rational(MessagePack.unpack(t))) })
 
-MessagePack::DefaultFactory.register_type(0x7f,
+MessagePack::DefaultFactory.register_type(0x02,
                                           Date,
                                           packer: ->(t){ t.to_s.to_msgpack },
                                           unpacker: ->(d){ Date.parse(MessagePack.unpack(d)) })
 
-MessagePack::DefaultFactory.register_type(0x7f, DateTime, packer: ->(t){ t.to_s.to_msgpack }, unpacker: ->(d){ DateTime.parse(MessagePack.unpack(d)) })
-
+MessagePack::DefaultFactory.register_type(0x03,
+                                          DateTime,
+                                          packer: ->(dt){ dt.to_time.to_r.to_s.to_msgpack },
+                                          unpacker: ->(dt){ Time.at(Rational(MessagePack.unpack(dt))).to_datetime })
 
 module ActiveRecord
   module Msgpack
