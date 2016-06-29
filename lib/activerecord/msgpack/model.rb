@@ -1,16 +1,5 @@
 require "msgpack"
 
-# Monkey patch
-# class Date
-#   def to_msgpack(*a); to_s.to_msgpack(*a) end
-# end
-# class Time
-#   def to_msgpack(*a); to_s.to_msgpack(*a) end
-# end
-# class DateTime
-#   def to_msgpack(*a); to_s.to_msgpack(*a) end
-# end
-
 MessagePack::DefaultFactory.register_type(0x01,
                                           Time,
                                           packer: ->(t){ t.to_r.to_s.to_msgpack },
