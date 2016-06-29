@@ -16,9 +16,8 @@ describe "Test" do
     expect(after_alice.updated_at.to_s).to eq alice.updated_at.to_s
   end
 
-  it "Pack/Unpack Time class include milliseconds." do
+  it "Pack/Unpack Time class include milliseconds" do
     now = Time.now
-    nsec = now.nsec
     packed = MessagePack.pack(now)
     unpacked_time = MessagePack.unpack(packed)
 
