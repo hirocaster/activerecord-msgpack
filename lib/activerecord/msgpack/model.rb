@@ -16,7 +16,11 @@ MessagePack::DefaultFactory.register_type(0x01,
                                           packer: ->(t){ t.to_r.to_s.to_msgpack },
                                           unpacker: ->(t){ Time.at(Rational(MessagePack.unpack(t))) })
 
-MessagePack::DefaultFactory.register_type(0x7f, Date, packer: ->(t){ t.to_s.to_msgpack }, unpacker: ->(d){ Date.parse(MessagePack.unpack(d)) })
+MessagePack::DefaultFactory.register_type(0x7f,
+                                          Date,
+                                          packer: ->(t){ t.to_s.to_msgpack },
+                                          unpacker: ->(d){ Date.parse(MessagePack.unpack(d)) })
+
 MessagePack::DefaultFactory.register_type(0x7f, DateTime, packer: ->(t){ t.to_s.to_msgpack }, unpacker: ->(d){ DateTime.parse(MessagePack.unpack(d)) })
 
 
