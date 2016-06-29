@@ -25,4 +25,11 @@ describe "Test" do
     expect(unpacked_time.nsec).to eq now.nsec
     expect(unpacked_time).to eq now
   end
+
+  it "Pack/Unpack Date class" do
+    date = Date.new
+    packed = MessagePack.pack(date)
+    unpacked_date = MessagePack.unpack(packed)
+    expect(unpacked_date).to eq date
+  end
 end
